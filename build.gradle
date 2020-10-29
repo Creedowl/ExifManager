@@ -1,0 +1,27 @@
+plugins {
+    id 'java'
+}
+
+group 'com.creedowl'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation('org.junit.jupiter:junit-jupiter:5.7.0')
+}
+
+jar {
+    manifest {
+        attributes "Main-Class": "com.creedowl.exifmanager.Manager"
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
