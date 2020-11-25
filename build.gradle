@@ -13,6 +13,7 @@ dependencies {
     implementation('commons-cli:commons-cli:1.4')
     implementation('org.apache.commons:commons-imaging:1.0-alpha2')
     testImplementation('org.junit.jupiter:junit-jupiter:5.7.0')
+    testImplementation('org.mockito:mockito-core:3.+')
 }
 
 jar {

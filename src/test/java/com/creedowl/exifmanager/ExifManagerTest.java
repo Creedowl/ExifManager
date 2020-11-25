@@ -1,7 +1,10 @@
 package com.creedowl.exifmanager;
 
 import org.apache.commons.imaging.formats.tiff.constants.ExifTagConstants;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import static org.mockito.Mockito.*;
 
 import java.io.File;
 
@@ -15,9 +18,17 @@ class ExifManagerTest {
     // jpeg without metadata
     private final File p3 = new File("src/test/resources/p3.jpg");
 
-    private final ExifManager manager = new ExifManager(p1);
+    private ExifManager manager = null;
 
     ExifManagerTest() throws Exception {
+    }
+
+    @BeforeEach
+    void setUp() throws Exception {
+        var real_manager = new ExifManager(p1);
+        manager = spy(real_manager);
+        doNothing().when(manager).removeAllExifMetadata(any());
+        when(manager.showAllExifMetadata()).thenReturn(true).thenReturn(false);
     }
 
     @Test
