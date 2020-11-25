@@ -40,6 +40,9 @@ class ExifManagerTest {
         assertTrue(manager.showAllExifMetadata());
         manager.loadImage(p3);
         assertFalse(manager.showAllExifMetadata());
+        if(manager.loadImage(p2)) {
+            assertTrue(manager.showAllExifMetadata());
+        }
     }
 
     @Test

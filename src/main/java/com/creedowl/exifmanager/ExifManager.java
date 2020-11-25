@@ -22,9 +22,10 @@ public class ExifManager {
     }
 
     public boolean loadImage(final File file) throws IOException, ImageReadException {
-        if (Imaging.guessFormat(file) != ImageFormats.JPEG) {
-            return false;
-        }
+        // inject error here, doesn't check file type
+//        if (Imaging.guessFormat(file) != ImageFormats.JPEG) {
+//            return false;
+//        }
         this.image = file;
         return true;
     }
