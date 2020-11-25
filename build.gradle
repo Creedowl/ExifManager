@@ -10,6 +10,8 @@ repositories {
 }
 
 dependencies {
+    implementation('commons-cli:commons-cli:1.4')
+    implementation('org.apache.commons:commons-imaging:1.0-alpha2')
     testImplementation('org.junit.jupiter:junit-jupiter:5.7.0')
 }
 
@@ -24,4 +26,11 @@ jar {
 
 test {
     useJUnitPlatform()
+}
+
+task run(type: JavaExec) {
+    group = "Execution"
+    description = "Run the main class with JavaExecTask"
+    classpath = sourceSets.main.runtimeClasspath
+    main = "com.creedowl.exifmanager.Manager"
 }
